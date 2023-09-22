@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hamsters xmlns="http://www.irit.fr/ICS/HAMSTERS/7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Send message to walker" version="7" xsi:schemaLocation="http://www.irit.fr/ICS/HAMSTERS/7.0 https://www.irit.fr/recherches/ICS/xsd/hamsters/v7/v7.xsd">
+    <nodes>
+        <task copy="false" id="t1" type="goal">
+            <graphics>
+                <graphic folded="false">
+                    <position x="369" y="141"/>
+                </graphic>
+            </graphics>
+            <operator id="o1" type="enable" knowledgeproceduraltype="">
+                <graphics>
+                    <graphic>
+                        <position x="420" y="256"/>
+                    </graphic>
+                </graphics>
+                <task copy="false" id="t2" type="cognitive_decision" knowledgeproceduraltype="">
+                    <graphics>
+                        <graphic folded="false">
+                            <position x="120" y="314"/>
+                        </graphic>
+                    </graphics>
+                    <description>Want to exchange with a dog owner</description>
+                    <xlproperties/>
+                    <coreproperties>
+                        <categories>
+                            <category name="simulation">
+<property name="duration" value="false"/>
+<property name="iterative" value="0"/>
+<property name="optional" value="false"/>
+<property name="minexectime" value="0"/>
+<property name="maxexectime" value="0"/>
+                            </category>
+                            <category name="authority">
+<property name="responsibility" type="java.lang.Boolean" value="false"/>
+<property name="authority" type="java.lang.Boolean" value="false"/>
+                            </category>
+                            <category name="criticality">
+<property name="criticality" type="java.lang.Integer" value="0"/>
+                            </category>
+                        </categories>
+                    </coreproperties>
+                </task>
+                <task copy="false" structuration_link="Find and open a specific walk pageInstance2" id="t3" type="component" knowledgeproceduraltype="">
+                    <graphics>
+                        <graphic folded="false">
+                            <position x="369" y="314"/>
+                        </graphic>
+                    </graphics>
+                    <description>Find and open a specific walk page</description>
+                    <xlproperties/>
+                    <coreproperties>
+                        <categories>
+                            <category name="simulation">
+<property name="duration" value="false"/>
+<property name="iterative" value="0"/>
+<property name="optional" value="false"/>
+<property name="minexectime" value="0"/>
+<property name="maxexectime" value="0"/>
+                            </category>
+                            <category name="authority">
+<property name="responsibility" type="java.lang.Boolean" value="false"/>
+<property name="authority" type="java.lang.Boolean" value="false"/>
+                            </category>
+                            <category name="criticality">
+<property name="criticality" type="java.lang.Integer" value="0"/>
+                            </category>
+                        </categories>
+                    </coreproperties>
+                </task>
+                <task copy="false" structuration_link="Send a message on the walk message pageInstance3" id="t4" type="component" knowledgeproceduraltype="">
+                    <graphics>
+                        <graphic folded="false">
+                            <position x="618" y="314"/>
+                        </graphic>
+                    </graphics>
+                    <description>Send a message on the walk message page</description>
+                    <xlproperties/>
+                    <coreproperties>
+                        <categories>
+                            <category name="simulation">
+<property name="duration" value="false"/>
+<property name="iterative" value="0"/>
+<property name="optional" value="false"/>
+<property name="minexectime" value="0"/>
+<property name="maxexectime" value="0"/>
+                            </category>
+                            <category name="authority">
+<property name="responsibility" type="java.lang.Boolean" value="false"/>
+<property name="authority" type="java.lang.Boolean" value="false"/>
+                            </category>
+                            <category name="criticality">
+<property name="criticality" type="java.lang.Integer" value="0"/>
+                            </category>
+                        </categories>
+                    </coreproperties>
+                </task>
+            </operator>
+            <description>Send message to a walker</description>
+            <xlproperties/>
+            <coreproperties>
+                <categories>
+                    <category name="simulation">
+                        <property name="duration" value="false"/>
+                        <property name="iterative" value="0"/>
+                        <property name="optional" value="false"/>
+                        <property name="minexectime" value="0"/>
+                        <property name="maxexectime" value="0"/>
+                    </category>
+                    <category name="authority">
+                        <property name="responsibility" type="java.lang.Boolean" value="false"/>
+                        <property name="authority" type="java.lang.Boolean" value="false"/>
+                    </category>
+                    <category name="criticality">
+                        <property name="criticality" type="java.lang.Integer" value="0"/>
+                    </category>
+                </categories>
+            </coreproperties>
+        </task>
+    </nodes>
+    <datas/>
+    <errors/>
+    <security/>
+    <parameters/>
+    <instancevalues/>
+    <parametersdefinitions/>
+</hamsters>

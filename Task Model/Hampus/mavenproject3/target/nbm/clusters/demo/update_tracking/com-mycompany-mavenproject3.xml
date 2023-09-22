@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><module codename="com.mycompany.mavenproject3">
-    <module_version install_time="1695348381558" last="true" origin="installer" specification_version="1.0">
-        <file crc="2351092412" name="config/Modules/com-mycompany-mavenproject3.xml"/>
-        <file crc="2561313413" name="modules/com-mycompany-mavenproject3.jar"/>
-    </module_version>
-</module>

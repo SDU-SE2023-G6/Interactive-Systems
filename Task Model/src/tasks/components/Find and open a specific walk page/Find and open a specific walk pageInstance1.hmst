@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hamsters xmlns="http://www.irit.fr/ICS/HAMSTERS/7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Find and open a specific walk page" version="7" xsi:schemaLocation="http://www.irit.fr/ICS/HAMSTERS/7.0 https://www.irit.fr/recherches/ICS/xsd/hamsters/v7/v7.xsd">
+    <nodes>
+        <task copy="false" id="t0" type="component">
+            <graphics>
+                <graphic folded="false">
+                    <position x="192" y="321"/>
+                </graphic>
+            </graphics>
+            <operator id="o1" type="choice" knowledgeproceduraltype="">
+                <graphics>
+                    <graphic>
+                        <position x="471" y="344"/>
+                    </graphic>
+                </graphics>
+                <operator id="o2" type="enable" knowledgeproceduraltype="">
+                    <graphics>
+                        <graphic>
+                            <position x="504" y="424"/>
+                        </graphic>
+                    </graphics>
+                    <task copy="false" id="t1" type="interactive_input" knowledgeproceduraltype="">
+                        <graphics>
+                            <graphic folded="false">
+<position x="615" y="536"/>
+                            </graphic>
+                        </graphics>
+                        <description>Select a walk page in the list</description>
+                        <xlproperties/>
+                        <coreproperties>
+                            <categories>
+<category name="simulation">
+    <property name="duration" value="false"/>
+    <property name="iterative" value="0"/>
+    <property name="optional" value="false"/>
+    <property name="minexectime" value="0"/>
+    <property name="maxexectime" value="0"/>
+</category>
+<category name="authority">
+    <property name="responsibility" type="java.lang.Boolean" value="false"/>
+    <property name="authority" type="java.lang.Boolean" value="false"/>
+</category>
+<category name="criticality">
+    <property name="criticality" type="java.lang.Integer" value="0"/>
+</category>
+                            </categories>
+                        </coreproperties>
+                    </task>
+                    <task copy="false" id="t2" type="interactive" knowledgeproceduraltype="">
+                        <graphics>
+                            <graphic folded="false">
+<position x="631" y="462"/>
+                            </graphic>
+                        </graphics>
+                        <description>Open walk page on menu</description>
+                        <xlproperties/>
+                        <coreproperties>
+                            <categories>
+<category name="simulation">
+    <property name="duration" value="false"/>
+    <property name="iterative" value="0"/>
+    <property name="optional" value="false"/>
+    <property name="minexectime" value="0"/>
+    <property name="maxexectime" value="0"/>
+</category>
+<category name="authority">
+    <property name="responsibility" type="java.lang.Boolean" value="false"/>
+    <property name="authority" type="java.lang.Boolean" value="false"/>
+</category>
+<category name="criticality">
+    <property name="criticality" type="java.lang.Integer" value="0"/>
+</category>
+                            </categories>
+                        </coreproperties>
+                    </task>
+                </operator>
+                <operator id="o3" type="enable" knowledgeproceduraltype="">
+                    <graphics>
+                        <graphic>
+                            <position x="511" y="261"/>
+                        </graphic>
+                    </graphics>
+                    <task copy="false" id="t4" type="abstractsystem" knowledgeproceduraltype="">
+                        <graphics>
+                            <graphic folded="false">
+<position x="617" y="208"/>
+                            </graphic>
+                        </graphics>
+                        <description>Display a walk notification</description>
+                        <xlproperties/>
+                        <coreproperties>
+                            <categories>
+<category name="simulation">
+    <property name="duration" value="false"/>
+    <property name="iterative" value="0"/>
+    <property name="optional" value="false"/>
+    <property name="minexectime" value="0"/>
+    <property name="maxexectime" value="0"/>
+</category>
+<category name="authority">
+    <property name="responsibility" type="java.lang.Boolean" value="false"/>
+    <property name="authority" type="java.lang.Boolean" value="false"/>
+</category>
+<category name="criticality">
+    <property name="criticality" type="java.lang.Integer" value="0"/>
+</category>
+                            </categories>
+                        </coreproperties>
+                    </task>
+                    <task copy="false" id="t3" type="interactive_output" knowledgeproceduraltype="">
+                        <graphics>
+                            <graphic folded="false">
+<position x="617" y="361"/>
+                            </graphic>
+                        </graphics>
+                        <description>Open the walk page</description>
+                        <xlproperties/>
+                        <coreproperties>
+                            <categories>
+<category name="simulation">
+    <property name="duration" value="false"/>
+    <property name="iterative" value="0"/>
+    <property name="optional" value="false"/>
+    <property name="minexectime" value="0"/>
+    <property name="maxexectime" value="0"/>
+</category>
+<category name="authority">
+    <property name="responsibility" type="java.lang.Boolean" value="false"/>
+    <property name="authority" type="java.lang.Boolean" value="false"/>
+</category>
+<category name="criticality">
+    <property name="criticality" type="java.lang.Integer" value="0"/>
+</category>
+                            </categories>
+                        </coreproperties>
+                    </task>
+                    <task copy="false" id="t5" type="interactive_input" knowledgeproceduraltype="">
+                        <graphics>
+                            <graphic folded="false">
+<position x="617" y="281"/>
+                            </graphic>
+                        </graphics>
+                        <description>Click on walk notificiation</description>
+                        <xlproperties/>
+                        <coreproperties>
+                            <categories>
+<category name="simulation">
+    <property name="duration" value="false"/>
+    <property name="iterative" value="0"/>
+    <property name="optional" value="false"/>
+    <property name="minexectime" value="0"/>
+    <property name="maxexectime" value="0"/>
+</category>
+<category name="authority">
+    <property name="responsibility" type="java.lang.Boolean" value="false"/>
+    <property name="authority" type="java.lang.Boolean" value="false"/>
+</category>
+<category name="criticality">
+    <property name="criticality" type="java.lang.Integer" value="0"/>
+</category>
+                            </categories>
+                        </coreproperties>
+                    </task>
+                </operator>
+            </operator>
+            <description>Find and open a specific walk page</description>
+            <xlproperties/>
+            <coreproperties>
+                <categories>
+                    <category name="simulation">
+                        <property name="duration" value="false"/>
+                        <property name="iterative" value="0"/>
+                        <property name="optional" value="false"/>
+                        <property name="minexectime" value="0"/>
+                        <property name="maxexectime" value="0"/>
+                    </category>
+                    <category name="authority">
+                        <property name="responsibility" type="java.lang.Boolean" value="false"/>
+                        <property name="authority" type="java.lang.Boolean" value="false"/>
+                    </category>
+                    <category name="criticality">
+                        <property name="criticality" type="java.lang.Integer" value="0"/>
+                    </category>
+                </categories>
+            </coreproperties>
+        </task>
+    </nodes>
+    <datas/>
+    <errors/>
+    <security/>
+    <parameters/>
+    <instancevalues/>
+    <parametersdefinitions/>
+</hamsters>

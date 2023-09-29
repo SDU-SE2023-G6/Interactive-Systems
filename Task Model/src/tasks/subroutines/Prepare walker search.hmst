@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hamsters xmlns="http://www.irit.fr/ICS/HAMSTERS/7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Prepare walker search" version="7" xsi:schemaLocation="http://www.irit.fr/ICS/HAMSTERS/7.0 https://www.irit.fr/recherches/ICS/xsd/hamsters/v7/v7.xsd">
+    <nodes>
+        <task copy="false" id="t1" type="subroutine">
+            <graphics>
+                <graphic folded="false">
+                    <position x="451" y="33"/>
+                </graphic>
+            </graphics>
+            <operator id="o4" type="order_independent" knowledgeproceduraltype="">
+                <graphics>
+                    <graphic>
+                        <position x="491" y="147"/>
+                    </graphic>
+                </graphics>
+                <task copy="false" id="t2" type="abstractuser" knowledgeproceduraltype="">
+                    <graphics>
+                        <graphic folded="false">
+                            <position x="232" y="238"/>
+                        </graphic>
+                    </graphics>
+                    <operator id="o3" type="order_independent" knowledgeproceduraltype="">
+                        <graphics>
+                            <graphic>
+<position x="259" y="334"/>
+                            </graphic>
+                        </graphics>
+                        <task copy="false" id="t4" type="cognitive_analysis" knowledgeproceduraltype="">
+                            <graphics>
+<graphic folded="false">
+    <position x="31" y="409"/>
+</graphic>
+                            </graphics>
+                            <description>Think of dog-related filter criteria</description>
+                            <xlproperties/>
+                            <coreproperties>
+<categories>
+    <category name="simulation">
+        <property name="duration" value="false"/>
+        <property name="iterative" value="0"/>
+        <property name="optional" value="false"/>
+        <property name="minexectime" value="0"/>
+        <property name="maxexectime" value="0"/>
+    </category>
+    <category name="authority">
+        <property name="responsibility" type="java.lang.Boolean" value="false"/>
+        <property name="authority" type="java.lang.Boolean" value="false"/>
+    </category>
+    <category name="criticality">
+        <property name="criticality" type="java.lang.Integer" value="0"/>
+    </category>
+</categories>
+                            </coreproperties>
+                        </task>
+                        <task copy="false" id="t5" type="cognitive_analysis" knowledgeproceduraltype="">
+                            <graphics>
+<graphic folded="false">
+    <position x="299" y="409"/>
+</graphic>
+                            </graphics>
+                            <description>Think of walker-related filter criteria</description>
+                            <xlproperties/>
+                            <coreproperties>
+<categories>
+    <category name="simulation">
+        <property name="duration" value="false"/>
+        <property name="iterative" value="0"/>
+        <property name="optional" value="false"/>
+        <property name="minexectime" value="0"/>
+        <property name="maxexectime" value="0"/>
+    </category>
+    <category name="authority">
+        <property name="responsibility" type="java.lang.Boolean" value="false"/>
+        <property name="authority" type="java.lang.Boolean" value="false"/>
+    </category>
+    <category name="criticality">
+        <property name="criticality" type="java.lang.Integer" value="0"/>
+    </category>
+</categories>
+                            </coreproperties>
+                        </task>
+                    </operator>
+                    <description>Think of filter criteria</description>
+                    <xlproperties/>
+                    <coreproperties>
+                        <categories>
+                            <category name="simulation">
+<property name="duration" value="false"/>
+<property name="iterative" value="0"/>
+<property name="optional" value="false"/>
+<property name="minexectime" value="0"/>
+<property name="maxexectime" value="0"/>
+                            </category>
+                            <category name="authority">
+<property name="responsibility" type="java.lang.Boolean" value="false"/>
+<property name="authority" type="java.lang.Boolean" value="false"/>
+                            </category>
+                            <category name="criticality">
+<property name="criticality" type="java.lang.Integer" value="0"/>
+                            </category>
+                        </categories>
+                    </coreproperties>
+                </task>
+                <task copy="false" id="t6" type="cognitive_decision" knowledgeproceduraltype="">
+                    <graphics>
+                        <graphic folded="false">
+                            <position x="531" y="238"/>
+                        </graphic>
+                    </graphics>
+                    <description>Think of time slot for walk</description>
+                    <xlproperties/>
+                    <coreproperties>
+                        <categories>
+                            <category name="simulation">
+<property name="duration" value="false"/>
+<property name="iterative" value="0"/>
+<property name="optional" value="false"/>
+<property name="minexectime" value="0"/>
+<property name="maxexectime" value="0"/>
+                            </category>
+                            <category name="authority">
+<property name="responsibility" type="java.lang.Boolean" value="false"/>
+<property name="authority" type="java.lang.Boolean" value="false"/>
+                            </category>
+                            <category name="criticality">
+<property name="criticality" type="java.lang.Integer" value="0"/>
+                            </category>
+                        </categories>
+                    </coreproperties>
+                </task>
+                <task copy="false" id="t3" type="interactive_input" knowledgeproceduraltype="">
+                    <graphics>
+                        <graphic folded="false">
+                            <position x="782" y="238"/>
+                        </graphic>
+                    </graphics>
+                    <description>Visit walker search page</description>
+                    <xlproperties/>
+                    <coreproperties>
+                        <categories>
+                            <category name="simulation">
+<property name="duration" value="false"/>
+<property name="iterative" value="0"/>
+<property name="optional" value="false"/>
+<property name="minexectime" value="0"/>
+<property name="maxexectime" value="0"/>
+                            </category>
+                            <category name="authority">
+<property name="responsibility" type="java.lang.Boolean" value="false"/>
+<property name="authority" type="java.lang.Boolean" value="false"/>
+                            </category>
+                            <category name="criticality">
+<property name="criticality" type="java.lang.Integer" value="0"/>
+                            </category>
+                        </categories>
+                    </coreproperties>
+                </task>
+            </operator>
+            <description>Prepare walker search</description>
+            <xlproperties/>
+            <coreproperties>
+                <categories>
+                    <category name="simulation">
+                        <property name="duration" value="false"/>
+                        <property name="iterative" value="0"/>
+                        <property name="optional" value="false"/>
+                        <property name="minexectime" value="0"/>
+                        <property name="maxexectime" value="0"/>
+                    </category>
+                    <category name="authority">
+                        <property name="responsibility" type="java.lang.Boolean" value="false"/>
+                        <property name="authority" type="java.lang.Boolean" value="false"/>
+                    </category>
+                    <category name="criticality">
+                        <property name="criticality" type="java.lang.Integer" value="0"/>
+                    </category>
+                </categories>
+            </coreproperties>
+        </task>
+    </nodes>
+    <datas>
+        <data type="informationdod" id="a1">
+            <description>Filter criteria thoughts</description>
+            <properties/>
+            <link feature="none" sourceid="t2" type="STORE_TYPE" value=""/>
+            <graphics>
+                <graphic>
+                    <position x="85" y="115"/>
+                </graphic>
+            </graphics>
+        </data>
+    </datas>
+    <errors/>
+    <security/>
+    <parameters/>
+    <instancevalues/>
+    <parametersdefinitions/>
+</hamsters>

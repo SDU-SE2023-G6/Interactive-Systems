@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<hamsters xmlns="http://www.irit.fr/ICS/HAMSTERS/7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Filter walkers" version="7" xsi:schemaLocation="http://www.irit.fr/ICS/HAMSTERS/7.0 https://www.irit.fr/recherches/ICS/xsd/hamsters/v7/v7.xsd">
+<hamsters xmlns="http://www.irit.fr/ICS/HAMSTERS/7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Schedule walk with choosen walker" version="7" xsi:schemaLocation="http://www.irit.fr/ICS/HAMSTERS/7.0 https://www.irit.fr/recherches/ICS/xsd/hamsters/v7/v7.xsd">
     <nodes>
         <task copy="false" id="t1" type="goal">
             <graphics>
@@ -304,6 +304,33 @@
                         </categories>
                     </coreproperties>
                 </task>
+                <task copy="false" id="t14" type="subroutine" knowledgeproceduraltype="">
+                    <graphics>
+                        <graphic folded="false">
+                            <position x="821" y="222"/>
+                        </graphic>
+                    </graphics>
+                    <description>Schedule walk with choosen walker</description>
+                    <xlproperties/>
+                    <coreproperties>
+                        <categories>
+                            <category name="simulation">
+<property name="duration" value="false"/>
+<property name="iterative" value="0"/>
+<property name="optional" value="false"/>
+<property name="minexectime" value="0"/>
+<property name="maxexectime" value="0"/>
+                            </category>
+                            <category name="authority">
+<property name="responsibility" type="java.lang.Boolean" value="false"/>
+<property name="authority" type="java.lang.Boolean" value="false"/>
+                            </category>
+                            <category name="criticality">
+<property name="criticality" type="java.lang.Integer" value="0"/>
+                            </category>
+                        </categories>
+                    </coreproperties>
+                </task>
             </operator>
             <description>Filter walkers based on criteria</description>
             <xlproperties/>
@@ -346,7 +373,7 @@
             <link feature="none" sourceid="t5" type="ACCESS_TYPE" value=""/>
             <graphics>
                 <graphic>
-                    <position x="744" y="400"/>
+                    <position x="724" y="401"/>
                 </graphic>
             </graphics>
         </data>
@@ -358,6 +385,17 @@
             <graphics>
                 <graphic>
                     <position x="23" y="351"/>
+                </graphic>
+            </graphics>
+        </data>
+        <data type="informationdod" id="0">
+            <description>Selected walker</description>
+            <properties/>
+            <link feature="none" sourceid="t5" type="STORE_TYPE" value=""/>
+            <link feature="none" sourceid="t14" type="ACCESS_TYPE" value=""/>
+            <graphics>
+                <graphic>
+                    <position x="821" y="319"/>
                 </graphic>
             </graphics>
         </data>

@@ -18,23 +18,22 @@ app.use('/api/reviews', reviewRoutes);
 app.use('/api/messages', messageRoutes);
 
 // Middleware for 404 Not Found responses for unhandled routes
+const helmet = require('helmet');
+const morgan = require('morgan');
+const rateLimit = require('express-rate-limit');
 
-app.use((req, res, next) => {
-    res.status(404).json({ message: 'Resource not found' });
-});
+// Security middleware
+app.use(helmet());
 
-// Global error handling middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack); // Log error stack for debugging
-    const statusCode = err.statusCode || 500; // Default to 500 server error
-    res.status(statusCode).json({ message: err.message });
-});
+// Logging middleware
+app.use(morgan('tiny'));
 
-  
-// Define a simple route to ensure server is working
-app.get('/', (req, res) => {
-    res.send('WalkPaw backend is running...');
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
 });
+app.use(limiter);
 
 // Set the port from the environment or default to 5000
 const PORT = process.env.PORT || 5000;
@@ -44,7 +43,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/walkpaw')
 .then(() => console.log('Connected to MongoDB...'))
 .catch((err) => console.error('Could not connect to MongoDB:', err));
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+
+// Existing 404 and global error handling middleware continues here...
+
+module.exports = app;

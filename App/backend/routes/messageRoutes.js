@@ -6,6 +6,16 @@ const messageController = require('../controllers/messageController');
 // Route to get a list of messages
 router.get('/', messageController.listMessages);
 
-// Additional message-related routes go here
+// Create a new message
+router.post('/', messageController.createMessage);
+
+// Retrieve a specific message
+router.get('/:messageId', messageController.getMessage);
+
+// Update a specific message
+router.put('/:messageId', messageController.updateMessage);
+
+// Delete a specific message
+router.delete('/:messageId', messageController.deleteMessage);
 
 module.exports = router;

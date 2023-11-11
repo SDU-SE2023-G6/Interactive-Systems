@@ -2,12 +2,25 @@
 const Message = require('../models/messageModel');
 
 exports.listMessages = async (req, res) => {
-  try {
-    const messages = await Message.find({}).populate('senderId receiverId');
-    res.json(messages);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
+  // Implementation
 };
 
-// Add additional controller methods as needed for CRUD operations
+// Create a new message
+exports.createMessage = async (req, res) => {
+  // Implementation
+};
+
+// Retrieve a specific message
+exports.getMessage = async (req, res) => {
+  // Implementation
+};
+
+// Update a specific message
+exports.updateMessage = async (req, res) => {
+  // Implementation
+};
+
+// Delete a specific message
+exports.deleteMessage = async (req, res) => {
+  // Implementation
+};

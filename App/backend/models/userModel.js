@@ -1,5 +1,6 @@
-// backend/models/userModel.js
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
@@ -8,8 +9,24 @@ const userSchema = new mongoose.Schema({
   isWalker: { type: Boolean, required: true, default: false },
   fullName: { type: String, required: true, maxlength: 100 },
   address: { type: String, required: false },
-  // Add additional user fields as needed
 });
+
+userSchema.pre('save', function(next) {
+    if (!this.isModified('password')) return next();
+
+    bcrypt.hash(this.password, saltRounds, (err, hash) => {
+        if (err) return next(err);
+        this.password = hash;
+        next();
+    });
+});
+
+userSchema.methods.comparePassword = function(candidatePassword, cb) {
+    bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
+        if (err) return cb(err);
+        cb(null, isMatch);
+    });
+};
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;

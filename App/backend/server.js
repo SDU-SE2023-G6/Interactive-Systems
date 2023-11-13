@@ -4,6 +4,7 @@ const userRoutes = require('./routes/userRoutes');
 const walkRoutes = require('./routes/walkRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const messageRoutes = require('./routes/messageRoutes');
+const authRoutes = require('./routes/authRoutes');
 const mongoose = require('mongoose');
 
 const app = express();
@@ -16,6 +17,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/walks', walkRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/messages', messageRoutes);
+app.use('/api/auth', authRoutes);
 
 // Middleware for 404 Not Found responses for unhandled routes
 const helmet = require('helmet');

@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
+const verifyToken = require('../middleware/authMiddleware');
 
 // Route to get a list of users
 router.get('/', userController.listUsers);
@@ -17,5 +18,9 @@ router.put('/:userId', userController.updateUser);
 
 // Delete a specific user
 router.delete('/:userId', userController.deleteUser);
+
+router.get('/protected', verifyToken, (req, res) => {
+    res.send('Access to protected route.');
+});
 
 module.exports = router;

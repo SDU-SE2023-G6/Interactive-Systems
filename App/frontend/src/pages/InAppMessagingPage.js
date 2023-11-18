@@ -1,19 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Box, Typography } from '@mui/material';
 import MessageListAndChatBox from '../components/MessageListAndChatBox';
+import { fetchMessages, createMessage } from '../features/messagesSlice';
 
 function InAppMessagingPage() {
-  const [messages, setMessages] = useState([]);
+  const dispatch = useDispatch();
+  const { messages } = useSelector((state) => state.messages);
+  const currentUser = useSelector((state) => state.user.currentUser); // Fetch current user from the user slice
 
   useEffect(() => {
-    const mockMessages = [
-      { sender: 'Walker 1', text: 'Looking forward to walking Bella tomorrow!' },
-    ];
-    setMessages(mockMessages);
-  }, []);
+    dispatch(fetchMessages());
+  }, [dispatch]);
 
-  const handleSendMessage = (newMessage) => {
-    console.log('New Message:', newMessage);
+  const handleSendMessage = (newMessageText) => {
+    if (!currentUser) {
+      console.error('No user logged in');
+      return;
+    }
+
+    const newMessageData = {
+      text: newMessageText,
+      senderId: currentUser.id, // or any unique identifier from the user data
+      senderName: currentUser.name // Optional, if you want to display the name
+    };
+    dispatch(createMessage(newMessageData));
   };
 
   return (

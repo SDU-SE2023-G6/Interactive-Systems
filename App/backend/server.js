@@ -6,6 +6,7 @@ const reviewRoutes = require('./routes/reviewRoutes');
 const messageRoutes = require('./routes/messageRoutes');
 const authRoutes = require('./routes/authRoutes');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
 
@@ -45,7 +46,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/walkpaw')
 .then(() => console.log('Connected to MongoDB...'))
 .catch((err) => console.error('Could not connect to MongoDB:', err));
 
-
-// Existing 404 and global error handling middleware continues here...
+// Start the server
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 module.exports = app;

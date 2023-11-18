@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Box, Typography } from '@mui/material';
 import WalkSummaryCard from '../components/WalkSummaryCard';
+import { fetchWalks } from '../features/walksSlice'; // Assuming a walksSlice exists with fetchWalks
 
 function MyWalksPage() {
-  const [walks, setWalks] = useState([]);
+  const dispatch = useDispatch();
+  const { walks, status } = useSelector((state) => state.walks);
 
   useEffect(() => {
-    const mockWalks = [
-      { id: 1, date: '2023-04-10', duration: 60, ownerName: 'Owner 1' },
-    ];
-    setWalks(mockWalks);
-  }, []);
+    dispatch(fetchWalks());
+  }, [dispatch]);
 
   return (
     <Box sx={{
@@ -21,9 +21,15 @@ function MyWalksPage() {
     }}>
       <Typography variant="h4">My Scheduled Walks</Typography>
       <Box sx={{ width: '100%', maxWidth: 800 }}>
-        {walks.map((walk) => (
-          <WalkSummaryCard key={walk.id} walk={walk} />
-        ))}
+        {status === 'loading' ? (
+          <Typography>Loading walks...</Typography>
+        ) : walks.length > 0 ? (
+          walks.map((walk) => (
+            <WalkSummaryCard key={walk.id} walk={walk} />
+          ))
+        ) : (
+          <Typography>No scheduled walks.</Typography>
+        )}
       </Box>
     </Box>
   );

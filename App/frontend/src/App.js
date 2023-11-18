@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { fetchUserProfile } from './features/userSlice';
+import { fetchUserDetails } from './features/userSlice'; // Updated import
 import NavigationBar from './components/NavigationBar';
 import FooterComponent from './components/FooterComponent';
 
@@ -52,9 +52,9 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!currentUser) {
-      dispatch(fetchUserProfile(1)); // Replace '1' with dynamic user ID as needed
-    }
+    // Assuming you have a mechanism to get the logged-in user's ID
+    const loggedInUserId = currentUser?.id || 'defaultUserId'; 
+    dispatch(fetchUserDetails(loggedInUserId)); // Updated function call
   }, [currentUser, dispatch]);
 
   return (

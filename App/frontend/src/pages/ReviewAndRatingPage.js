@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Box, Typography, Button } from '@mui/material';
 import RatingComponent from '../components/RatingComponent';
 import { CustomTextField } from '../components/FormComponents';
+import { createReview } from '../features/reviewsSlice'; // Assuming a reviewsSlice with createReview
 
 function ReviewAndRatingPage() {
+  const dispatch = useDispatch();
   const [rating, setRating] = useState(0);
   const [reviewText, setReviewText] = useState('');
 
@@ -11,9 +14,9 @@ function ReviewAndRatingPage() {
     setRating(newRating);
   };
 
-  const handleSubmit = () => {
-    console.log('Review:', { rating, reviewText });
-    // Add logic to submit review to the backend
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createReview({ rating, text: reviewText }));
   };
 
   return (
@@ -25,7 +28,7 @@ function ReviewAndRatingPage() {
     }}>
       <Typography variant="h4">Leave a Review</Typography>
       <RatingComponent onRatingChange={handleRatingChange} />
-      <Box component="form" noValidate sx={{ width: '100%', maxWidth: 500, marginTop: 3 }}>
+      <Box component="form" noValidate sx={{ width: '100%', maxWidth: 500, marginTop: 3 }} onSubmit={handleSubmit}>
         <CustomTextField
           label="Your Review"
           name="reviewText"
@@ -39,7 +42,6 @@ function ReviewAndRatingPage() {
           fullWidth
           variant="contained"
           color="primary"
-          onClick={handleSubmit}
           sx={{ marginTop: 2 }}
         >
           Submit Review

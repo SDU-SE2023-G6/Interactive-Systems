@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Box, Typography, Switch, FormControlLabel } from '@mui/material';
+import { updateUserDetails } from '../features/userSlice'; // Assuming updateUserDetails action exists
 
 function SettingsAndPreferencesPage() {
-  const [settings, setSettings] = useState({
-    receiveNotifications: true,
-    makeProfilePublic: false,
-    // Add more settings as needed
-  });
+  const dispatch = useDispatch();
+  const settings = useSelector((state) => state.user.settings); // Assuming settings structure in the user slice
 
   const handleSettingChange = (event) => {
-    setSettings({ ...settings, [event.target.name]: event.target.checked });
+    const updatedSettings = { ...settings, [event.target.name]: event.target.checked };
+    dispatch(updateUserDetails(updatedSettings));
   };
 
   return (

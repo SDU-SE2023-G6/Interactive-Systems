@@ -1,22 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Box, Typography } from '@mui/material';
 import CalendarComponent from '../components/CalendarComponent';
+import { fetchWalks } from '../features/walksSlice'; // Assuming a walksSlice exists
+import { useNavigate } from 'react-router-dom';
 
 function WalkSchedulingPage() {
-  const [events, setEvents] = useState([]);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { walks } = useSelector((state) => state.walks);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   useEffect(() => {
-    const mockEvents = [
-      { title: 'Walk with Bella', date: '2023-04-15', id: 1 },
-      // ... more events
-    ];
-    setEvents(mockEvents);
-  }, []);
+    dispatch(fetchWalks());
+  }, [dispatch]);
 
   const handleDateClick = (arg) => {
-    console.log('Date clicked: ', arg.dateStr);
-    // Logic for scheduling a new walk or viewing existing walks
+    const dateClicked = arg.dateStr;
+    setSelectedDate(dateClicked);
+
+    // Check if there is already a walk scheduled for this date
+    const walkOnDate = walks.find(walk => walk.date === dateClicked);
+
+    if (walkOnDate) {
+      // If a walk is scheduled, navigate to the walk details page
+      // Assuming a route like '/walk-details/:walkId' exists
+      navigate(`/walk-details/${walkOnDate.id}`);
+    } else {
+      // If no walk is scheduled, open a modal or navigate to a scheduling page
+      // For this example, let's assume we navigate to a new scheduling page
+      // The route '/schedule-walk' should handle scheduling a new walk
+      navigate(`/schedule-walk?date=${dateClicked}`);
+    }
   };
+
+  // Transform walks data to the format expected by CalendarComponent
+  const events = walks.map(walk => ({
+    title: `Walk with ${walk.dogName}`,
+    date: walk.date,
+    id: walk.id
+  }));
 
   return (
     <Box sx={{

@@ -1,11 +1,20 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Box, Typography } from '@mui/material';
+import { fetchWalks } from '../features/walksSlice';
 
 function DashboardPage() {
+  const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-  const walks = []; // Placeholder data
+  const { walks } = useSelector((state) => state.walks);
 
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(fetchWalks());
+    }
+  }, [dispatch, currentUser]);
+
+  console.log(currentUser);
   return (
     <Box sx={{
       display: 'flex',
@@ -15,7 +24,7 @@ function DashboardPage() {
       padding: 4
     }}>
       <Typography variant="h4" sx={{ marginBottom: 2 }}>
-        {currentUser ? `Welcome, ${currentUser.name}` : 'Dashboard'}
+        {currentUser ? `Welcome, ${currentUser.fullName}` : 'Dashboard'}
       </Typography>
       <Box>
         {walks.length > 0 ? (

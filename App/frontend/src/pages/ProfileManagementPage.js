@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Box, Typography, Button } from '@mui/material';
 import { CustomTextField } from '../components/FormComponents';
 import UserProfileCard from '../components/UserProfileCard';
+import { updateUserDetails } from '../features/userSlice';
 
 function ProfileManagementPage() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
   const [profile, setProfile] = useState({ name: '', email: '' });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (currentUser) {
       setProfile({ name: currentUser.name, email: currentUser.email });
     }
@@ -19,10 +20,10 @@ function ProfileManagementPage() {
     setProfile({ ...profile, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log('Updated Profile:', profile);
-    // Dispatch the update profile action
-    // dispatch(updateUserProfile(profile));
+    dispatch(updateUserDetails(profile));
   };
 
   return (
@@ -34,7 +35,7 @@ function ProfileManagementPage() {
     }}>
       <Typography variant="h4">Profile Management</Typography>
       <UserProfileCard user={currentUser} />
-      <Box component="form" noValidate sx={{ width: '100%', maxWidth: 500, marginTop: 3 }}>
+      <Box component="form" noValidate sx={{ width: '100%', maxWidth: 500, marginTop: 3 }} onSubmit={handleSubmit}>
         <CustomTextField
           label="Name"
           name="name"
@@ -52,7 +53,6 @@ function ProfileManagementPage() {
           fullWidth
           variant="contained"
           color="primary"
-          onClick={handleSubmit}
           sx={{ marginTop: 2 }}
         >
           Update Profile

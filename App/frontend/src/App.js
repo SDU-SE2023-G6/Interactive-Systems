@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { fetchUserDetails } from './features/userSlice'; // Updated import
 import NavigationBar from './components/NavigationBar';
 import FooterComponent from './components/FooterComponent';
+import WalkBooking from './components/WalkBooking'; // Importing the WalkBooking component
 
 // Import pages
 import HomePage from './pages/HomePage';
@@ -19,6 +20,7 @@ import ReviewAndRatingPage from './pages/ReviewAndRatingPage';
 import InAppMessagingPage from './pages/InAppMessagingPage';
 import SettingsAndPreferencesPage from './pages/SettingsAndPreferencesPage';
 import HelpAndSupportPage from './pages/HelpAndSupportPage';
+import WalkConfirmationPage from './pages/WalkConfirmationPage';
 
 const theme = createTheme({
   palette: {
@@ -53,7 +55,7 @@ function App() {
 
   useEffect(() => {
     // Assuming you have a mechanism to get the logged-in user's ID
-    const loggedInUserId = currentUser?.id || 'defaultUserId'; 
+    const loggedInUserId = currentUser?.id || 'defaultUserId';
     dispatch(fetchUserDetails(loggedInUserId)); // Updated function call
   }, [currentUser, dispatch]);
 
@@ -68,7 +70,8 @@ function App() {
           <Route path="/profile" element={<ProfileManagementPage />} />
           <Route path="/find-walker" element={<FindAWalkerPage />} />
           <Route path="/my-walks" element={<MyWalksPage />} />
-          <Route path="/schedule-walk" element={<WalkSchedulingPage />} />
+          <Route path="/book-walk" element={<WalkBooking />} />
+          <Route path="/walk-confirmation" element={<WalkConfirmationPage />} />
           <Route path="/track-walk" element={<WalkTrackingPage />} />
           <Route path="/review" element={<ReviewAndRatingPage />} />
           <Route path="/messaging" element={<InAppMessagingPage />} />

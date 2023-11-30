@@ -5,6 +5,7 @@ const walkRoutes = require('./routes/walkRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const messageRoutes = require('./routes/messageRoutes');
 const authRoutes = require('./routes/authRoutes');
+const walkerRoutes = require('./routes/walkerRoutes');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 // Use the routes
 app.use('/api/users', userRoutes);
 app.use('/api/walks', walkRoutes);
+app.use('/api/walkers', walkerRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/auth', authRoutes);
@@ -43,8 +45,8 @@ const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/walkpaw')
-.then(() => console.log('Connected to MongoDB...'))
-.catch((err) => console.error('Could not connect to MongoDB:', err));
+  .then(() => console.log('Connected to MongoDB...'))
+  .catch((err) => console.error('Could not connect to MongoDB:', err));
 
 // Start the server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

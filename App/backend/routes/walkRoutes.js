@@ -10,17 +10,7 @@ router.get('/', walkController.listWalks);
 // Create a new walk
 router.post('/', walkController.createWalk);
 
-// Retrieve a specific walk
-router.get('/:walkId', walkController.getWalk);
-
 // Update a specific walk
 router.put('/:walkId', walkController.updateWalk);
-
-// Delete a specific walk
-router.delete('/:walkId', walkController.deleteWalk);
-
-router.get('/protected', verifyToken, (req, res) => {
-    res.send('Access to protected route.');
-});
 
 module.exports = router;

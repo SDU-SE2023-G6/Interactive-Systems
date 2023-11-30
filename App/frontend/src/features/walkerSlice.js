@@ -5,7 +5,8 @@ export const fetchWalkers = createAsyncThunk(
   'walkers/fetchWalkers',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch('/api/walkers');
+      const response = await fetch('http://localhost:5000/api/walkers');
+      console.log(response, await response.json());
       if (!response.ok) {
         throw new Error('Failed to fetch walkers');
       }
@@ -17,8 +18,21 @@ export const fetchWalkers = createAsyncThunk(
   }
 );
 
+async function fetchWalkersList() {
+  try {
+    const response = await fetch('http://localhost:5000/api/walkers');
+    if (!response.ok) {
+      throw new Error('Failed to fetch walkers');
+    }
+    const data = await response.json();
+    return data.walkers;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 const initialState = {
-  walkers: [],
+  walkers: await fetchWalkersList(),
   status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
   error: null,
 };

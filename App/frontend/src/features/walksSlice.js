@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getToken } from '../utils/auth';
 
-// Fetch all walks
+// Async thunk to fetch walks
 export const fetchWalks = createAsyncThunk(
-  'walks/fetchAll',
+  'walks/fetchWalks',
   async (_, { rejectWithValue }) => {
     try {
       const response = await fetch('http://localhost:5000/api/walks', {
@@ -22,18 +22,18 @@ export const fetchWalks = createAsyncThunk(
   }
 );
 
-// Create a new walk
+// Async thunk to create a new walk
 export const createWalk = createAsyncThunk(
-  'walks/create',
-  async (walkData, { rejectWithValue }) => {
+  'walks/createWalk',
+  async (newWalk, { rejectWithValue }) => {
     try {
       const response = await fetch('http://localhost:5000/api/walks', {
         method: 'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${getToken()}`,
         },
-        body: JSON.stringify(walkData),
+        body: JSON.stringify(newWalk),
       });
       if (!response.ok) {
         const error = await response.json();
@@ -46,18 +46,18 @@ export const createWalk = createAsyncThunk(
   }
 );
 
-// Update a walk
+// Async thunk to update a walk
 export const updateWalk = createAsyncThunk(
-  'walks/update',
-  async ({ walkId, walkData }, { rejectWithValue }) => {
+  'walks/updateWalk',
+  async ({ id, updatedWalk }, { rejectWithValue }) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/walks/${walkId}`, {
+      const response = await fetch(`http://localhost:5000/api/walks/${id}`, {
         method: 'PUT',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${getToken()}`,
         },
-        body: JSON.stringify(walkData),
+        body: JSON.stringify(updatedWalk),
       });
       if (!response.ok) {
         const error = await response.json();
@@ -70,12 +70,12 @@ export const updateWalk = createAsyncThunk(
   }
 );
 
-// Delete a walk
+// Async thunk to delete a walk
 export const deleteWalk = createAsyncThunk(
-  'walks/delete',
-  async (walkId, { rejectWithValue }) => {
+  'walks/deleteWalk',
+  async (id, { rejectWithValue }) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/walks/${walkId}`, {
+      const response = await fetch(`http://localhost:5000/api/walks/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${getToken()}`,
@@ -83,9 +83,33 @@ export const deleteWalk = createAsyncThunk(
       });
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.message | 'Failed to delete walk');
+        throw new Error(error.message || 'Failed to delete walk');
       }
-      return walkId;
+      return id;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+// Async thunk to book a walk
+export const bookWalk = createAsyncThunk(
+  'walks/bookWalk',
+  async (walkDetails, { rejectWithValue }) => {
+    try {
+      const response = await fetch('http://localhost:5000/api/walks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${getToken()}`,
+        },
+        body: JSON.stringify(walkDetails),
+      });
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to book walk');
+      }
+      return await response.json();
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -95,15 +119,13 @@ export const deleteWalk = createAsyncThunk(
 const initialState = {
   walks: [],
   status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
-  error: null,
+  error: null
 };
 
-const walksSlice = createSlice({
+const walkSlice = createSlice({
   name: 'walks',
   initialState,
-  reducers: {
-    // Reducers if necessary
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchWalks.pending, (state) => {
@@ -132,7 +154,7 @@ const walksSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(updateWalk.fulfilled, (state, action) => {
-        state.walks = state.walks.map(walk => 
+        state.walks = state.walks.map(walk =>
           walk.id === action.payload.id ? action.payload : walk);
         state.status = 'succeeded';
       })
@@ -150,8 +172,19 @@ const walksSlice = createSlice({
       .addCase(deleteWalk.rejected, (state, action) => {
         state.error = action.payload;
         state.status = 'failed';
+      })
+      .addCase(bookWalk.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(bookWalk.fulfilled, (state, action) => {
+        state.walks.push(action.payload);
+        state.status = 'succeeded';
+      })
+      .addCase(bookWalk.rejected, (state, action) => {
+        state.error = action.payload;
+        state.status = 'failed';
       });
   },
 });
 
-export default walksSlice.reducer;
+export default walkSlice.reducer;

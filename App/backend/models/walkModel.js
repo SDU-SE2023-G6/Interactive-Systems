@@ -7,7 +7,8 @@ const walkSchema = new mongoose.Schema({
   date: { type: Date, required: true },
   duration: { type: Number, required: true, min: 1 },
   location: { type: String, required: true },
-  // Add additional walk fields as needed
+  status: { type: String, required: true, enum: ['scheduled', 'in_progress', 'completed', 'cancelled'], default: 'scheduled' },
+  specialRequirements: { type: String, required: false }
 });
 
 const Walk = mongoose.model('Walk', walkSchema);

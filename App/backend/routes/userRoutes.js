@@ -19,9 +19,6 @@ router.put('/:userId', userController.updateUser);
 // Delete a specific user
 router.delete('/:userId', userController.deleteUser);
 
-// Route to get a list of walkers
-router.get('/walkers', userController.listWalkers);
-
 router.get('/protected', verifyToken, (req, res) => {
     res.send('Access to protected route.');
 });

@@ -3,49 +3,49 @@ import { storeToken, removeToken, isAuthenticated as checkIsAuthenticated, store
 
 // Async thunk for user login
 export const loginUser = createAsyncThunk(
-    'auth/loginUser',
-    async (loginInfo, { rejectWithValue }) => {
-      try {
-        const response = await fetch('http://localhost:5000/api/auth/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(loginInfo),
-        });
-        if (!response.ok) {
-          const error = await response.json();
-          throw new Error(error.message || 'Login failed');
-        }
-        const data = await response.json();
-        console.log(data);
-        storeToken(data.token); // Store the token
-        storeUser(data.id); // Store the user details
-        return data.user; // Assuming the response contains the user data
-      } catch (error) {
-        return rejectWithValue(error.message);
+  'auth/loginUser',
+  async (loginInfo, { rejectWithValue }) => {
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(loginInfo),
+      });
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Login failed');
       }
+      const data = await response.json();
+      console.log(data);
+      storeToken(data.token); // Store the token
+      storeUser(data.id); // Store the user details
+      return data.user; // Assuming the response contains the user data
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
-  );
-  
-  // Async thunk for user registration
-  export const registerUser = createAsyncThunk(
-    'auth/registerUser',
-    async (registrationInfo, { rejectWithValue }) => {
-      try {
-        const response = await fetch('http://localhost:5000/api/auth/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(registrationInfo),
-        });
-        if (!response.ok) {
-          const error = await response.json();
-          throw new Error(error.message || 'Registration failed');
-        }
-        return await response.json(); // Assuming successful registration returns user data
-      } catch (error) {
-        return rejectWithValue(error.message);
+  }
+);
+
+// Async thunk for user registration
+export const registerUser = createAsyncThunk(
+  'auth/registerUser',
+  async (registrationInfo, { rejectWithValue }) => {
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(registrationInfo),
+      });
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Registration failed');
       }
+      return await response.json(); // Assuming successful registration returns user data
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
-  );
+  }
+);
 
 const initialState = {
   isAuthenticated: checkIsAuthenticated(), // Set based on token presence

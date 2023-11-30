@@ -1,17 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Box, Typography } from '@mui/material';
-import MapComponent from '../components/MapComponent';
+import MapComponent from '../components/MapComponent'; // Assuming MapComponent exists for tracking
 
 function WalkTrackingPage() {
-  const [walkPath, setWalkPath] = useState([]);
-
-  useEffect(() => {
-    const mockWalkPath = [
-      { lat: 40.7128, lng: -74.0060 }, // Example coordinates
-      // ... more coordinates for the walk path
-    ];
-    setWalkPath(mockWalkPath);
-  }, []);
+  // Assuming walkPath is obtained from the walk tracking API
+  const walkPath = []; // Replace with actual logic to obtain walk path data
 
   return (
     <Box sx={{

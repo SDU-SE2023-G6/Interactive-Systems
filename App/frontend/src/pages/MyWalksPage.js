@@ -1,16 +1,22 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import WalkSummaryCard from '../components/WalkSummaryCard';
-import { fetchWalks } from '../features/walksSlice'; // Assuming a walksSlice exists with fetchWalks
+import { fetchWalks } from '../features/walksSlice';
+import { useNavigate } from 'react-router-dom';
 
 function MyWalksPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { walks, status } = useSelector((state) => state.walks);
 
   useEffect(() => {
     dispatch(fetchWalks());
   }, [dispatch]);
+
+  const handleBookWalkClick = () => {
+    navigate('/book-walk');
+  };
 
   return (
     <Box sx={{
@@ -20,6 +26,14 @@ function MyWalksPage() {
       alignItems: 'center'
     }}>
       <Typography variant="h4">My Scheduled Walks</Typography>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handleBookWalkClick}
+        sx={{ marginBottom: 2 }}
+      >
+        Book a New Walk
+      </Button>
       <Box sx={{ width: '100%', maxWidth: 800 }}>
         {status === 'loading' ? (
           <Typography>Loading walks...</Typography>

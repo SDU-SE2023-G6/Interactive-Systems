@@ -1,0 +1,257 @@
+%%
+%% This is file `sample-manuscript.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% samples.dtx  (with options: `manuscript')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from sample-manuscript.tex.
+%% 
+%% For distribution of the original source see the terms
+%% for copying and modification in the file samples.dtx.
+%% 
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+%%
+%% Commands for TeXCount
+%TC:macro \cite [option:text,text]
+%TC:macro \citep [option:text,text]
+%TC:macro \citet [option:text,text]
+%TC:envir table 0 1
+%TC:envir table* 0 1
+%TC:envir tabular [ignore] word
+%TC:envir displaymath 0 word
+%TC:envir math 0 word
+%TC:envir comment 0 0
+%%
+%%
+%% The first command in your LaTeX source must be the \documentclass command.
+\documentclass[acsmall,screen]{acmart}
+
+%%
+%% \BibTeX command to typeset BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+%% Rights management information.  This information is sent to you
+%% when you complete the rights form.  These commands have SAMPLE
+%% values in them; it is your responsibility as an author to replace
+%% the commands and values with those provided to you when you
+%% complete the rights form.
+\setcopyright{acmlicensed}
+\copyrightyear{2023}
+\acmYear{2023}
+\acmDOI{XXXXXXX.XXXXXXX}
+
+%% These commands are for a PROCEEDINGS abstract or paper.
+\acmConference[Conference acronym 'XX]{Make sure to enter the correct
+  conference title from your rights confirmation emai}{June 03--05,
+  2018}{Woodstock, NY}
+\acmISBN{978-1-4503-XXXX-X/18/06}
+
+
+%%
+%% Submission ID.
+%% Use this when submitting an article to a sponsored event. You'll
+%% receive a unique submission ID from the organizers
+%% of the event, and this ID should be used as the parameter to this command.
+%%\acmSubmissionID{123-A56-BU3}
+
+%%
+%% For managing citations, it is recommended to use bibliography
+%% files in BibTeX format.
+%%
+%% You can then either use BibTeX with the ACM-Reference-Format style,
+%% or BibLaTeX with the acmnumeric or acmauthoryear sytles, that include
+%% support for advanced citation of software artefact from the
+%% biblatex-software package, also separately available on CTAN.
+%%
+%% Look at the sample-*-biblatex.tex files for templates showcasing
+%% the biblatex styles.
+%%
+
+%%
+%% The majority of ACM publications use numbered citations and
+%% references.  The command \citestyle{authoryear} switches to the
+%% "author year" style.
+%%
+%% If you are preparing content for an event
+%% sponsored by ACM SIGGRAPH, you must use the "author year" style of
+%% citations and references.
+%% Uncommenting
+%% the next command will enable that style.
+%%\citestyle{acmauthoryear}
+
+%%
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+%%
+%% The "title" command has an optional parameter,
+%% allowing the author to define a "short title" to be used in page headers.
+\title{Interactive Systems Engineering - Group 6}
+
+%%
+%% The "author" command and its associated commands are used to define
+%% the authors and their affiliations.
+%% Of note is the shared affiliation of the first two authors, and the
+%% "authornote" and "authornotemark" commands
+%% used to denote shared contribution to the research.
+\author{Fahim Shahriar}
+\email{fasha23@student.sdu.dk}
+\affiliation{%
+  \institution{Southern Denmark University}
+  \city{Odense}
+  \country{Denmark}
+}
+
+\author{Hampus Gärdström}
+\email{hgard20@student.sdu.dk}
+\affiliation{%
+  \institution{Southern Denmark University}
+  \city{Odense}
+  \country{Denmark}
+}
+
+\author{Henrik Pruess}
+\email{hepru23@student.sdu.dk}
+\affiliation{%
+  \institution{Southern Denmark University}
+  \city{Odense}
+  \country{Denmark}
+}
+
+\author{Henrik Schwarz}
+\email{hschw17@student.sdu.dk}
+\affiliation{%
+  \institution{Southern Denmark University}
+  \city{Odense}
+  \country{Denmark}
+}
+
+\author{Tom Bourjala}
+\email{tobou23@student.sdu.dk}
+\affiliation{%
+  \institution{Southern Denmark University}
+  \city{Odense}
+  \country{Denmark}
+}
+
+\author{Tomáš Souček}
+\email{tosou23@student.sdu.dk}
+\affiliation{%
+  \institution{Southern Denmark University}
+  \city{Odense}
+  \country{Denmark}
+}
+
+%%
+%% By default, the full list of authors will be used in the page
+%% headers. Often, this list is too long, and will overlap
+%% other information printed in the page headers. This command allows
+%% the author to define a more concise list
+%% of authors' names for this purpose.
+\renewcommand{\shortauthors}{Shahriar, et al.}
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+\begin{abstract}
+  Worldwide digitization increases the demand for skilled software engineers. The already present shortage of software engineers, that is expected to increase in the future, becomes a problem for the economy. At the same time, advancements in the field of large language models create new opportunities for enabling laymen to generate complex artifacts. Therefore, this paper explores the potentials of prompt engineering to involve end-users (non-engineers) into software engineering of interactive software systems.
+\end{abstract}
+
+%%
+%% The code below is generated by the tool at http://dl.acm.org/ccs.cfm.
+%% Please copy and paste the code instead of the example below.
+%%
+\begin{CCSXML}
+<ccs2012>
+   <concept>
+       <concept_id>10011007.10011074.10011092.10011782</concept_id>
+       <concept_desc>Software and its engineering~Automatic programming</concept_desc>
+       <concept_significance>500</concept_significance>
+       </concept>
+   <concept>
+       <concept_id>10003120.10003121</concept_id>
+       <concept_desc>Human-centered computing~Human computer interaction (HCI)</concept_desc>
+       <concept_significance>300</concept_significance>
+       </concept>
+   <concept>
+       <concept_id>10010147.10010178.10010179</concept_id>
+       <concept_desc>Computing methodologies~Natural language processing</concept_desc>
+       <concept_significance>500</concept_significance>
+       </concept>
+ </ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Software and its engineering~Automatic programming}
+\ccsdesc[300]{Human-centered computing~Human computer interaction (HCI)}
+\ccsdesc[500]{Computing methodologies~Natural language processing}
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+\keywords{Low code, End-user development, Generative AI, Large language model, Prompt Engineering}
+
+\received{20 December 2023}
+\received[revised]???
+\received[accepted]???
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+\section{Introduction}
+Worldwide digitization increases the demand for skilled software engineers. However, analyzes show that there is already a shortage of engineers, which will even increase in the future. Projections like \cite{yannick_binvel_85_2018} predict that there will be around 4.3 millions workers missing in the sector of technology, media and communication. Projections like that stress the importance of finding new ways to include non-engineers in the software development process. One way of achieving that is to shift the workload from the software engineers to the end-user of the software system. Different approaches strive for simplifying the software development process so that laymen with limited programming knowledge can create software systems themselves. Platforms like Microsoft PowerApps or Google AppSheets promote low-code or no-code approaches that simplify the creation of software systems. Instead of having to learn a programming language first, users of the platform can take advantage of simplified development processes and can quickly start creating software systems. However, even the users of the low-code/no-code platforms have to learn about their specifics before utilizing their full potential.
+
+Current developments in the field of large language models (LLM) offer an opportunity to further simplify end-user development of software systems. Instead of transforming their ideas manually into low-code/no-code implementations, end-users can convey their ideas to the LLM in a natural-language conversation like they would if talking to a human software engineer. Based on the conversation, the LLM would generate implementation instructions for the end-user. Assuming that the end-user has no knowledge of programming, the LLM needs to be prompted in a way that it produces clear, understandable instructions. A rather new discipline dealing with the construction of prompts for LLMs is prompt engineering \cite{white_prompt_2023}.
+
+This paper, written in the context of the Master’s course “Interactive Systems Engineering” at the Southern Denmark University, should contribute to the field of prompt engineering by exploring its potentials for end-user development of interactive software systems. Instead of just investigating whether a LLM can create an arbitrary software system, the conducted experiment explicitly targets interactive software systems incorporating concepts of Human-computer interaction (HCI) like user stories, personas or task models. This limits the scope of the work to a specific research field of software engineering, making it especially interesting for UI/UX designers that want to turn their designs into implemented software systems.
+
+Hence, the problem addressed in this paper is the creation of an interactive software system as an end-user without any knowledge of programming. While the desired structure and behavior of the software system are well-defined, the end-user in the experiment does not know how to implement the desired system. Therefore, the end-user should the required implementation details by having a natural language-driven conversation with a LLM. By doing so, the experiment  addresses the following the objectives:
+\begin{itemize}
+\item evaluation of the accessibility of prompt engineering for end-users.
+\item identification of challenges occurring when used by end-users.
+\item discovery of prompting patterns facilitating end-user development.
+\end{itemize}
+
+The approach taken is to conduct an experiment in which a test subject, that pretends to have no technical knowledge besides concepts of human-computer interaction, tries to implement a defined interactive software system by only relying on prompt engineering. Therefore, the test subject follows a predefined prompting template which is created utilizing already existing prompting patterns like "Chain-of-Thought" \cite{wei_chain--thought_2022}   and "Self-Refine" \cite{madaan_self-refine_2023}. Once filled, the template is used to prompt the LLM. The test subject is only allowed to use the instructions returned by the LLM; it cannot use any programming knowledge for the experiment. In case of an error, the error message must be prompted to the LLM which needs to resolve the error. While implementing the system, the test subject documents challenges that occurred along the way. 
+
+The conducted experiment shows that the LLM is generally able to instruct end-users without any technical knowledge to create code. However, creating a well-defined software system by only using an LLM is still challenging. Although the experiment utilized a predefined prompting template, there were numerous occasions where the answers of the LLM did not fulfill the requirements required to proceed with the template. Moreover, the instructions of the LLM are not always correct which can be hard to identify for end-users without any knowledge about programming. The errors lead to delays in the development process and can even end in dead ends, requiring programming knowledge to resolve.
+
+The paper contributes first steps towards research of the potentials of LLMs for facilitating end-user development. However, in order to use LLMs to enable end-users to create interactive systems in the real world more research is required. For instance, there should be more research on generic prompting templates, that help end users to create their desired interactive system without any knowledge of prompt engineering.
+
+
+\section{Background and Related Work}
+
+\section{Study Design}
+
+\section{Case Descriptions}
+
+\section{Results}
+
+\section{Discussion}
+
+\section{Conclusion and Future Work}
+
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{ise_bibtex}
+
+%%
+%% If your work has an appendix, this is the place to put it.
+\appendix
+
+\end{document}

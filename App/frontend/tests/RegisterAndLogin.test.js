@@ -1,6 +1,5 @@
 const { Builder, By, Key, until } = require('selenium-webdriver');
-
-jest.setTimeout(300000); // Increase the timeout to 30 seconds
+const assert = require('assert');
 
 describe('User Registration and Login Test', () => {
     let driver;
@@ -13,13 +12,15 @@ describe('User Registration and Login Test', () => {
         await driver.quit();
     });
 
-    test('Register and Login - Successful', async () => {
-        // Navigate to the Login/Registration page
+    test('should register and login successfully', async () => {
         await driver.get('http://localhost:3000/login');
 
-        // Wait for the Register tab to be available and then click it
-        const registerTab = await driver.wait(until.elementLocated(By.xpath("//span[contains(text(), 'Register')]")), 1000);
-        await registerTab.click();
+        // Wait for the email input field to be present
+        await driver.wait(until.elementLocated(By.css('input[name="email"]')), 10000);
+
+        // Now interact with the email input field
+        const emailInput = await driver.findElement(By.css('input[name="email"]'));
+        await emailInput.sendKeys('newuser@example.com');
 
         // Fill out the registration form
         await driver.findElement(By.name('email')).sendKeys('newuser@example.com');
@@ -29,11 +30,11 @@ describe('User Registration and Login Test', () => {
         await driver.findElement(By.name('username')).sendKeys('newuser');
 
         // Submit the registration form
-        const registerButton = await driver.findElement(By.xpath("//button[contains(text(), 'Register')]"));
+        const registerButton = await driver.findElement(By.css('button[type="button"]'));
         await registerButton.click();
 
         // Wait for login page to load
-        await driver.wait(until.elementLocated(By.xpath("//span[contains(text(), 'Login')]")), 1000);
+        await driver.wait(until.elementLocated(By.xpath('//button[contains(text(), "Login")]')), 10000);
 
         // Fill out the login form
         await driver.findElement(By.name('email')).sendKeys('newuser@example.com');
@@ -44,6 +45,6 @@ describe('User Registration and Login Test', () => {
 
         // Verify successful navigation to the dashboard
         const url = await driver.getCurrentUrl();
-        expect(url).toContain('/dashboard');
+        assert(url.includes('/dashboard'));
     });
 });

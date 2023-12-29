@@ -1,4 +1,4 @@
-const { Builder, By, until } = require('selenium-webdriver');
+const { Builder, By, Key, until } = require('selenium-webdriver');
 const assert = require('assert');
 
 describe('User Registration and Login Test', () => {
@@ -12,7 +12,7 @@ describe('User Registration and Login Test', () => {
         await driver.quit();
     });
 
-    test('should register a new user', async () => {
+    test('should register and login successfully', async () => {
         try {
             await driver.get('http://localhost:3000/login');
 
@@ -20,50 +20,79 @@ describe('User Registration and Login Test', () => {
             const registerTab = await driver.findElement(By.xpath('//button[contains(text(), "Register")]'));
             await registerTab.click();
 
-            // Wait for a moment to ensure the registration form is displayed
-            await driver.sleep(3000); // Adjust this delay as necessary
+            // Wait for the registration form to be active
+            await driver.wait(until.elementLocated(By.xpath('//label[contains(text(), "Email")]/following-sibling::div//input')), 10000);
+
+            // Debug: Check if the email field is visible
+            const isEmailVisible = await driver.findElement(By.xpath('//label[contains(text(), "Email")]/following-sibling::div//input')).isDisplayed();
+            console.log('Is Email field visible:', isEmailVisible);
 
             // Fill in the registration form
-            // Email field
             const emailInput = await driver.findElement(By.xpath('//label[contains(text(), "Email")]/following-sibling::div//input'));
             await emailInput.sendKeys('newuser@example.com');
 
-            // Password and other fields...
+            const passwordInput = await driver.findElement(By.xpath('//label[contains(text(), "Password")]/following-sibling::div//input'));
+            await passwordInput.sendKeys('password123');
 
-            // Click the registration button
-            const registerButton = await driver.findElement(By.xpath('//button[contains(text(), "Register")][@type="button"]'));
-            await registerButton.click();
+            const confirmPasswordInput = await driver.findElement(By.xpath('//label[contains(text(), "Confirm Password")]/following-sibling::div//input'));
+            await confirmPasswordInput.sendKeys('password123');
 
-            // Add any additional steps for post-registration actions or checks
+            // Full Name field
+            await driver.wait(until.elementLocated(By.xpath('//label[contains(text(), "Full Name")]/following-sibling::div//input')), 10000);
+            const fullNameInput = await driver.findElement(By.xpath('//label[contains(text(), "Full Name")]/following-sibling::div//input'));
+            await fullNameInput.sendKeys('John Doe');
 
-            console.log('Registration form submitted successfully.');
+            // Debug: Check if the username field is visible before interacting
+            // Replace with the actual XPath for the username field
+            const isUsernameVisible = await driver.findElement(By.xpath('//label[contains(text(), "Username")]/following-sibling::div//input')).isDisplayed();
+            console.log('Is Username field visible:', isUsernameVisible);
 
-         // Navigate to the login page
-         await driver.get('http://localhost:3000/login');
+            // Username field
+            // Replace with the actual XPath for the username field
+            const usernameInput = await driver.findElement(By.xpath('//label[contains(text(), "Username")]/following-sibling::div//input'));
+            await usernameInput.sendKeys('newusername');
 
-         // Fill in the login form
-         // Email field
-         const emailInputForLogin = await driver.findElement(By.xpath('//input[@name="email" or @id=":r1:"]'));
-         await emailInputForLogin.sendKeys('newuser@example.com');
+            // Locate the registration button
+            const registerButton = await driver.findElement(By.xpath('//button[contains(text(), "Register")]'));
 
-         // Password field
-         const passwordInputForLogin = await driver.findElement(By.xpath('//input[@name="password" or @id=":r3:"]'));
-         await passwordInputForLogin.sendKeys('password123');
+            // Wait until the button is clickable
+            await driver.wait(until.elementIsEnabled(registerButton), 10000);
 
-        // Click the login button
-        // Assuming the button can be identified by the text "Login"
-        const loginButton = await driver.findElement(By.xpath('//button[contains(text(), "Login")]'));
-        await loginButton.click();
+            // Click the button using JavaScript
+            await driver.executeScript("arguments[0].click();", registerButton);
+ 
 
+            // Navigate to the login page
+            await driver.get('http://localhost:3000/login');
 
-         // Verify successful navigation or login
-         // Add checks or assertions as necessary
+            // Fill in the login form
+            // Email field
+            const emailInputForLogin = await driver.findElement(By.xpath('//input[@name="email" or @id=":r1:"]'));
+            await emailInputForLogin.sendKeys('newuser@example.com');
 
-         console.log('Login process completed successfully.');
+            // Password field
+            const passwordInputForLogin = await driver.findElement(By.xpath('//input[@name="password" or @id=":r3:"]'));
+            await passwordInputForLogin.sendKeys('password123');
 
-     } catch (error) {
-         console.error('Test failed', error);
-         throw error;
-     }
- }, 30000); // Adjusting Jest timeout for the test
+            // Click the login button
+            // Assuming the button can be identified by the text "Login"
+            const loginButton = await driver.findElement(By.xpath('//button[contains(text(), "Login")]'));
+            await loginButton.click();
+
+            // Verify successful navigation or login
+            // Add checks or assertions as necessary
+
+            console.log('Login process completed successfully.');
+
+            // Wait for the dashboard page to load by checking for the welcome message
+            const welcomeMessage = await driver.wait(until.elementLocated(By.xpath('//h4[contains(text(), "Welcome, John Doe")]')), 10000);
+            assert(welcomeMessage, 'Welcome message not found on dashboard');
+
+            console.log('Successfully navigated to the dashboard and verified welcome message.');
+
+        } catch (error) {
+            console.error('Test failed', error);
+            throw error;
+        }
+    }, 30000); // Adjusting Jest timeout for the test
 });
